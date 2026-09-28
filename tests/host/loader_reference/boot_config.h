@@ -1,0 +1,30 @@
+
+
+#ifndef BOOT_CONFIG_H
+#define BOOT_CONFIG_H
+
+#include <stdint.h>
+
+#ifndef XIP_BASE
+#define XIP_BASE 0x10000000u
+#endif
+#ifndef SRAM_BASE
+#define SRAM_BASE 0x20000000u
+#endif
+
+#ifndef BOOTLOADER_SIZE
+#define BOOTLOADER_SIZE (512u * 1024u)
+#endif
+
+#ifndef FLASH_TOTAL_SIZE
+#define FLASH_TOTAL_SIZE (16u * 1024u * 1024u)
+#endif
+
+#define APP_PARTITION_OFFSET (BOOTLOADER_SIZE)
+#define APP_PARTITION_SIZE   (FLASH_TOTAL_SIZE - BOOTLOADER_SIZE)
+#define APP_BASE_ADDR        (XIP_BASE + APP_PARTITION_OFFSET)
+#define APP_END_ADDR         (APP_BASE_ADDR + APP_PARTITION_SIZE)
+
+#define SRAM_END_ADDR (SRAM_BASE + (520u * 1024u))
+
+#endif

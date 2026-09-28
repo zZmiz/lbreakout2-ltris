@@ -1,0 +1,37 @@
+Get cygwin and in addition to base system install
+mingw64-i686-SDL/mixer
+mingw64-i686-gcc-core/debuginfo
+automake
+make
+along with all dependencies
+
+i686-w64-mingw32-gcc is the 32 bit compiler
+
+./configure --build=i686-w64-mingw32 --host=i686-w64-mingw32 --disable-install
+
+potential problems:
+- AM_GNU_GETTEXT might be unknown, comment it out
+- AM_PATH_SDL might not work, just use AC_CHECK_LIB
+- SDL_mixer might need another AC_CHECK_LIB before the one setting the flags
+
+make
+
+copy ltris.exe, gfx and sounds directory into a new folder
+
+copy dlls from /usr/i686-w64-mingw32/sys-root/mingw/bin to src
+SDL.dll
+SDL_mixer.dll
+iconv.dll
+libFLAC-8.dll
+libgcc_s_sjlj-1.dll
+libintl-8.dll
+libmikmod-3.dll
+libogg-0.dll
+libvorbis-0.dll
+libvorbisfile-3.dll
+libwinpthread-1.dll
+
+fullscreen/window switch doesn't work in windows
+use batch file with command line options
+links do not work as target is hardcoded with path
+
